@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+enum AuthMode { Signup, Login }
+
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
