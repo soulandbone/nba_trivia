@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "757402203871",
+    "firebase_url": "https://nbatriviaapp-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "nbatriviaapp",
+    "storage_bucket": "nbatriviaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757402203871:android:2385f3de8f92348e6f5b6a",
+        "android_client_info": {
+          "package_name": "com.example.nba_trivia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757402203871-vthe3959qjcbklshlhhika3av60spt07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA33FKBJHhQKv264gcqGl3XtxW_lVWjWWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "757402203871-vthe3959qjcbklshlhhika3av60spt07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
