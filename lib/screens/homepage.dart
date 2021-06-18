@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
-  Future<void> _signAnonymously() async {
+class HomePage extends StatelessWidget {
+  Future<void> _logOut() async {
     try {
-      await FirebaseAuth.instance.signInAnonymously();
+      await FirebaseAuth.instance.signOut();
     } catch (e) {
       print(e.message);
     }
@@ -20,9 +20,9 @@ class Login extends StatelessWidget {
       ),
       body: Center(
         child: TextButton(
-          child: Text('Log in Anonymously'),
+          child: Text('Logout'),
           onPressed: () {
-            _signAnonymously();
+            _logOut();
           },
         ),
       ),
