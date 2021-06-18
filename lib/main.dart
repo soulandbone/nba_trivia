@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nba_trivia/auxiliar/landing_page.dart';
-import 'package:nba_trivia/screens/login.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   runApp(MyApp());
