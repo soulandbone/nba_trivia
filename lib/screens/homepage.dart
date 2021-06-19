@@ -16,11 +16,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('NBA Trivia APP'),
+        title: Text('Home Page'),
       ),
       body: Center(
         child: TextButton(
-          child: Text('Logout'),
+          child: Text(
+            'Logout',
+            style: TextStyle(fontSize: 18, color: Colors.redAccent),
+          ),
           onPressed: () {
             _logOut();
           },
