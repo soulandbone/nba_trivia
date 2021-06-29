@@ -1,32 +1,47 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:nba_trivia/screens/homepage.dart';
 import 'package:nba_trivia/screens/login.dart';
-import 'package:provider/provider.dart';
+import 'package:nba_trivia/screens/sign_up.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
+  @override
+  _LandingPageState createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    final firebaseAuth = Provider.of<FirebaseAuth>(context);
-
-    return StreamBuilder<FirebaseUser>(
-        stream: firebaseAuth.onAuthStateChanged,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
-            FirebaseUser user = snapshot.data;
-            if (user == null) {
-              return Login(
-                firebaseAuth: firebaseAuth,
-              );
-            }
-            return HomePage();
-          } else {
-            return Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          }
-        });
+    return Scaffold(
+      body: Column(children: [
+        SizedBox(
+          height: 120,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
+              },
+              child: Text('Register'),
+              style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(15), side: BorderSide(color: Colors.red)))),
+            ),
+            SizedBox(
+              width: 15,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+              },
+              child: Text('Login'),
+              style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(15), side: BorderSide(color: Colors.red)))),
+            ),
+          ],
+        )
+      ]),
+    );
   }
 }
