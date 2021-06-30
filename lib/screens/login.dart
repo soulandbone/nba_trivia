@@ -17,7 +17,7 @@ class _LoginState extends State<Login> {
   _validateLogin(String email, String password) async {
     if (_formKey.currentState.validate()) {
       try {
-        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: email, password: password);
+        await _auth.signInWithEmailAndPassword(email: email, password: password);
         Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
       } catch (e) {
         print(e.toString());
