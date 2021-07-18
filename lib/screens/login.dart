@@ -29,6 +29,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text('Login'),
       ),
       body: Container(
@@ -38,7 +39,12 @@ class _LoginState extends State<Login> {
             SizedBox(
               height: 125,
             ),
-            Container(margin: EdgeInsets.only(left: 15), child: Text('E-Mail')),
+            Container(
+                margin: EdgeInsets.only(left: 15),
+                child: Text(
+                  'E-Mail',
+                  style: TextStyle(color: Colors.red),
+                )),
             SizedBox(height: 10),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 15),
@@ -46,29 +52,41 @@ class _LoginState extends State<Login> {
                 validator: (value) => EmailValidator.validate(value) ? null : 'Please enter a valid email',
                 controller: _mail,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
                 ),
               ),
             ),
             SizedBox(
               height: 10,
             ),
-            Container(margin: EdgeInsets.only(left: 15), child: Text('Password')),
+            Container(
+                margin: EdgeInsets.only(left: 15),
+                child: Text(
+                  'Password',
+                  style: TextStyle(color: Colors.red),
+                )),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
                 controller: _password,
                 obscureText: true,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                _validateLogin(_mail.text, _password.text);
-              },
-              child: Text('Login'),
+            SizedBox(
+              height: 150,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.black)),
+                onPressed: () {
+                  _validateLogin(_mail.text, _password.text);
+                },
+                child: Center(child: Text('Login', style: TextStyle(color: Colors.greenAccent))),
+              ),
             ),
           ]),
         ),

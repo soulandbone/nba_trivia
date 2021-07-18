@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nba_trivia/screens/login.dart';
-import 'package:nba_trivia/screens/sign_up.dart';
+import 'package:nba_trivia/widgets/button_type1.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -8,40 +7,59 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  navigate(String route) {
+    Navigator.pushNamed(context, route);
+  }
+
+  Gradient gradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [Colors.purple, Colors.blue],
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        SizedBox(
-          height: 120,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text(
+          'NBA Quiz App',
+          style: TextStyle(color: Colors.green),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
-              },
-              child: Text('Register'),
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(15), side: BorderSide(color: Colors.red)))),
-            ),
+      ),
+      body: Center(
+        child: Container(
+          decoration: BoxDecoration(gradient: gradient),
+          child: Column(children: [
             SizedBox(
-              width: 15,
+              height: 25,
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
-              },
-              child: Text('Login'),
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(15), side: BorderSide(color: Colors.red)))),
+            Image(
+              image: AssetImage('assets/logopng.png'),
+              height: 200,
+              width: 150,
             ),
-          ],
-        )
-      ]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomButton(
+                  text: 'Register',
+                  route: '/signup',
+                  callback: navigate,
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                CustomButton(
+                  text: 'Login',
+                  route: '/login',
+                  callback: navigate,
+                ),
+              ],
+            ),
+          ]),
+        ),
+      ),
     );
   }
 }

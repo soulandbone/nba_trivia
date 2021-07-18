@@ -30,7 +30,11 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        backgroundColor: Colors.black,
+        title: Text(
+          'Sign Up',
+          style: TextStyle(color: Colors.green),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -40,7 +44,12 @@ class _SignUpState extends State<SignUp> {
               SizedBox(
                 height: 125,
               ),
-              Container(margin: EdgeInsets.only(left: 15), child: Text('E-Mail')),
+              Container(
+                  margin: EdgeInsets.only(left: 15),
+                  child: Text(
+                    'E-Mail',
+                    style: TextStyle(color: Colors.red),
+                  )),
               SizedBox(height: 10),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
@@ -48,14 +57,20 @@ class _SignUpState extends State<SignUp> {
                   validator: (value) => EmailValidator.validate(value) ? null : 'Please enter a valid email',
                   controller: _mail,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
                   ),
                 ),
               ),
               SizedBox(
                 height: 10,
               ),
-              Container(margin: EdgeInsets.only(left: 15), child: Text('Password')),
+              Container(
+                margin: EdgeInsets.only(left: 15),
+                child: Text(
+                  'Password',
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 child: TextFormField(
@@ -68,11 +83,16 @@ class _SignUpState extends State<SignUp> {
                   },
                   obscureText: true,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
                   ),
                 ),
               ),
-              Container(margin: EdgeInsets.only(left: 15), child: Text('Confirm Password')),
+              Container(
+                  margin: EdgeInsets.only(left: 15),
+                  child: Text(
+                    'Confirm Password',
+                    style: TextStyle(color: Colors.red),
+                  )),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 child: TextFormField(
@@ -85,15 +105,22 @@ class _SignUpState extends State<SignUp> {
                   },
                   obscureText: true,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  _validateUser(_mail.text, _password.text);
-                },
-                child: Text('Register'),
+              SizedBox(
+                height: 150,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: ElevatedButton(
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.black)),
+                  onPressed: () {
+                    _validateUser(_mail.text, _password.text);
+                  },
+                  child: Center(child: Text('Register', style: TextStyle(color: Colors.greenAccent))),
+                ),
               ),
             ]),
           ),

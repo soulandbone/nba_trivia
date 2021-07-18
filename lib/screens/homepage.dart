@@ -2,8 +2,16 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nba_trivia/screens/trivia_page.dart';
 
-FirebaseAuth auth = FirebaseAuth.instance;
+final FirebaseAuth auth = FirebaseAuth.instance;
+
+Future<String> getCurrentUser() async {
+  final FirebaseUser user = await auth.currentUser();
+  final uid = user.uid;
+  final mail = user.email;
+  return mail;
+}
 
 class HomePage extends StatelessWidget {
   Future<void> _logOut() async {
@@ -23,9 +31,29 @@ class HomePage extends StatelessWidget {
       body: Center(
           child: Column(
         children: [
+          FutureBuilder(
+              future: getCurrentUser(),
+              builder: (context, snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.none:
+                    return Text('None');
+                    break;
+                  case ConnectionState.active:
+                  case ConnectionState.waiting:
+                    return Text('Active and maybe waiting');
+                  case ConnectionState.done:
+                    return Text(snapshot.data);
+                  default:
+                    return Text('done');
+                }
+              }),
           Row(
             children: [
-              ElevatedButton(onPressed: () {}, child: Text('Trivia')),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/triviapage');
+                  },
+                  child: Text('Trivia')),
               ElevatedButton(onPressed: () {}, child: Text('HighScores')),
               ElevatedButton(onPressed: () {}, child: Text('Your Profile')),
             ],
