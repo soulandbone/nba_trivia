@@ -1,0 +1,39 @@
+[ 
+{
+ "1" : "How many titles does the Los Angeles Lakers have?",
+ "2" : "Who is the All Time NBA Leading Scorer? ",
+ "3" : "In Which City was born Lebron James?"
+},
+{
+  "1" : {
+	"a" : "15",
+	"b" : "16",
+	"c" : "17",
+	"d" : "18"
+	},
+  "2" : {
+	"a" : "Karl Malone",
+	"b" : "Michael Jordan",
+	"c" : "Kareem Abdul Jabbar",
+	"d" : "Kobe Bryant"
+	},
+  "3" : {
+	"a" : "Miami",
+	"b" : "Cleveland",
+	"c" : "Akron",
+	"d" : "Chicago"
+	}
+},
+{	
+   "1": "17",
+   "2": "Kareem Abdul Jabbar",
+   "3": "Akron"			
+	
+}
+
+	
+
+ 
+
+
+]

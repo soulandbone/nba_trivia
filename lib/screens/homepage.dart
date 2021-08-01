@@ -10,7 +10,10 @@ Future<String> getCurrentUser() async {
   final FirebaseUser user = await auth.currentUser();
   final uid = user.uid;
   final mail = user.email;
-  return mail;
+  if (mail != null) {
+    return mail;
+  }
+  return 'Anonymous';
 }
 
 class HomePage extends StatelessWidget {
@@ -51,7 +54,7 @@ class HomePage extends StatelessWidget {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/triviapage');
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => GetJson()));
                   },
                   child: Text('Trivia')),
               ElevatedButton(onPressed: () {}, child: Text('HighScores')),
