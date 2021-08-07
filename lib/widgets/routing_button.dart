@@ -7,7 +7,7 @@ class CustomButton extends StatelessWidget {
   final String text;
   final VoidNavigate callback;
 
-  CustomButton({this.route, this.text, this.callback});
+  CustomButton({this.route, this.text, this.callback}); //testing
 
   @override
   Widget build(BuildContext context) {
