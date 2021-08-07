@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:nba_trivia/auxiliar/landing_page.dart';
 import 'package:nba_trivia/screens/login.dart';
 import 'package:nba_trivia/screens/sign_up.dart';
-import 'package:nba_trivia/screens/trivia_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/signup': (context) => SignUp(),
         '/login': (context) => Login(),
-        '/triviapage': (context) => TriviaPage(),
       },
       title: 'NBA Trivia',
       theme: ThemeData(

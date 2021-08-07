@@ -10,24 +10,55 @@ class GetJson extends StatelessWidget {
     return FutureBuilder(
         future: DefaultAssetBundle.of(context).loadString("assets/catalogue.json"),
         builder: (context, snapshot) {
-          var myData = json.decode(snapshot.data.toString());
+          List myData = json.decode(snapshot.data.toString());
           if (myData == null) {
-            return Scaffold();
+            return Scaffold(
+                body: Center(
+              child: Text('Loading'),
+            ));
           } else {
-            return TriviaPage();
+            return TriviaPage(myData);
           }
         });
   }
 }
 
 class TriviaPage extends StatefulWidget {
+  final myData;
+
+  TriviaPage(this.myData);
+
   @override
-  _TriviaPageState createState() => _TriviaPageState();
+  _TriviaPageState createState() => _TriviaPageState(myData);
 }
 
-List<String> test = ['hello', 'fuyck', 'you', 'yeah'];
-
 class _TriviaPageState extends State<TriviaPage> {
+  final myData;
+
+  _TriviaPageState(this.myData);
+
+  String transformIndex(int index) {
+    switch (index) {
+      case 0:
+        {
+          return "a";
+        }
+      case 1:
+        {
+          return "b";
+        }
+      case 2:
+        {
+          return "c";
+        }
+      case 3:
+        {
+          return "d";
+        }
+    }
+    return '';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +76,7 @@ class _TriviaPageState extends State<TriviaPage> {
           Expanded(
             flex: 2,
             child: Container(
-              child: QuestionCard(question: 'What are you'),
+              child: QuestionCard(question: myData[0]['1']),
               decoration: BoxDecoration(color: Colors.orange),
             ),
           ),
@@ -57,7 +88,8 @@ class _TriviaPageState extends State<TriviaPage> {
                   itemCount: 4,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
                   itemBuilder: (context, index) {
-                    return AnswerCard(answer: index.toString());
+                    String indexAnswer = transformIndex(index);
+                    return AnswerCard(answer: myData[1]['1'][indexAnswer]);
                   }),
               padding: EdgeInsets.all(10),
             ),
