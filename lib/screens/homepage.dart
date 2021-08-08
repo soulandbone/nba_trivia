@@ -8,7 +8,7 @@ final FirebaseAuth auth = FirebaseAuth.instance;
 
 Future<String> getCurrentUser() async {
   final FirebaseUser user = await auth.currentUser();
-  final uid = user.uid;
+  //final uid = user.uid;
   final mail = user.email;
   if (mail != null) {
     return mail;

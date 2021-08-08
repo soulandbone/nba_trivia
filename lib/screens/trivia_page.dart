@@ -61,6 +61,17 @@ class _TriviaPageState extends State<TriviaPage> {
 
   @override
   Widget build(BuildContext context) {
+    String question = '2';
+
+    Function tapped(int index) {
+      print('you have tapped $index');
+      if (myData[1][question][transformIndex(index)] == myData[2][question]) {
+        print('Respuesta Correcta');
+      } else {
+        print('Respuesta incorrecta');
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Test'),
@@ -76,7 +87,7 @@ class _TriviaPageState extends State<TriviaPage> {
           Expanded(
             flex: 2,
             child: Container(
-              child: QuestionCard(question: myData[0]['1']),
+              child: QuestionCard(question: myData[0][question]),
               decoration: BoxDecoration(color: Colors.orange),
             ),
           ),
@@ -89,7 +100,14 @@ class _TriviaPageState extends State<TriviaPage> {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
                   itemBuilder: (context, index) {
                     String indexAnswer = transformIndex(index);
-                    return AnswerCard(answer: myData[1]['1'][indexAnswer]);
+                    return GestureDetector(
+                      onTap: () {
+                        tapped(index);
+                      },
+                      child: AnswerCard(answer: myData[1][question][indexAnswer], correct: myData[2][question], question: question, myData: myData),
+
+                      //onPressed: tapped(index),
+                    );
                   }),
               padding: EdgeInsets.all(10),
             ),
@@ -97,6 +115,7 @@ class _TriviaPageState extends State<TriviaPage> {
           Expanded(
               flex: 1,
               child: (Container(
+                child: Text('the Correct answer is' + myData[2][question]),
                 decoration: BoxDecoration(color: Colors.amber),
               ))),
         ],
