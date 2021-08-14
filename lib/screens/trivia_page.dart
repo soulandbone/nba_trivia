@@ -61,7 +61,7 @@ class _TriviaPageState extends State<TriviaPage> {
 
   @override
   Widget build(BuildContext context) {
-    String question = '2';
+    String question = '3';
 
     Function tapped(int index) {
       print('you have tapped $index');

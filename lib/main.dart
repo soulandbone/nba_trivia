@@ -27,8 +27,9 @@ class MyApp extends StatelessWidget {
       },
       title: 'NBA Trivia',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          //primaryColor: Colors.purple,
+          primarySwatch: Colors.purple,
+          scaffoldBackgroundColor: Colors.black),
       home: LandingPage(),
     );
   }

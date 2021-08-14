@@ -29,6 +29,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text('Home Page'),
       ),
       body: Center(
@@ -50,15 +51,48 @@ class HomePage extends StatelessWidget {
                     return Text('done');
                 }
               }),
+          SizedBox(
+            height: 200,
+          ),
           Row(
             children: [
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => GetJson()));
-                  },
-                  child: Text('Trivia')),
-              ElevatedButton(onPressed: () {}, child: Text('HighScores')),
-              ElevatedButton(onPressed: () {}, child: Text('Your Profile')),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  height: 300,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => GetJson()));
+                      },
+                      child: Text('Trivia')),
+                ),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  height: 300,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('HighScores'),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  height: 300,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Your Profile'),
+                  ),
+                ),
+              ),
             ],
           ),
           TextButton(
