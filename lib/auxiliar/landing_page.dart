@@ -30,7 +30,6 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
         title: Text(
           'NBA Quiz App',
           style: TextStyle(color: Colors.green),

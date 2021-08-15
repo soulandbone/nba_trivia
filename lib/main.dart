@@ -29,7 +29,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           //primaryColor: Colors.purple,
           primarySwatch: Colors.purple,
-          scaffoldBackgroundColor: Colors.black),
+          scaffoldBackgroundColor: Colors.white,
+          primaryTextTheme: TextTheme(bodyText2: TextStyle(color: Colors.white)),
+          appBarTheme: AppBarTheme(backgroundColor: Colors.pink),
+          cardColor: Colors.deepOrange),
       home: LandingPage(),
     );
   }

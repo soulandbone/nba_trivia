@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nba_trivia/auxiliar/landing_page.dart';
 import 'package:nba_trivia/screens/trivia_page.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
@@ -9,24 +10,25 @@ final FirebaseAuth auth = FirebaseAuth.instance;
 Future<String> getCurrentUser() async {
   final FirebaseUser user = await auth.currentUser();
   //final uid = user.uid;
-  final mail = user.email;
-  if (mail != null) {
-    return mail;
+
+  if (user != null) {
+    return 'Welcome ' + user.email;
   }
-  return 'Anonymous';
+  return 'Welcome Anonymous Mysterious User';
 }
 
 class HomePage extends StatelessWidget {
-  Future<void> _logOut() async {
-    try {
-      await FirebaseAuth.instance.signOut();
-    } catch (e) {
-      print(e.message);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    Future<void> _logOut() async {
+      try {
+        await FirebaseAuth.instance.signOut();
+        Navigator.push(context, MaterialPageRoute(builder: (context) => LandingPage()));
+      } catch (e) {
+        print(e.message);
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -54,46 +56,49 @@ class HomePage extends StatelessWidget {
           SizedBox(
             height: 200,
           ),
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  height: 300,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => GetJson()));
-                      },
-                      child: Text('Trivia')),
-                ),
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  height: 300,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('HighScores'),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    height: 300,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => GetJson()));
+                        },
+                        child: Text('Trivia')),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  height: 300,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Your Profile'),
+                SizedBox(
+                  width: 15,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    height: 300,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('HighScores'),
+                    ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: 15,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    height: 300,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Your Profile'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           TextButton(
             child: Text(

@@ -66,9 +66,9 @@ class _TriviaPageState extends State<TriviaPage> {
     Function tapped(int index) {
       print('you have tapped $index');
       if (myData[1][question][transformIndex(index)] == myData[2][question]) {
-        print('Respuesta Correcta');
+        print('Right Answer');
       } else {
-        print('Respuesta incorrecta');
+        print('Wrong Answer');
       }
     }
 
