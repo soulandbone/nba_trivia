@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:nba_trivia/providers/trivia_provider.dart';
 import 'package:nba_trivia/widgets/answer_card.dart';
 import 'package:nba_trivia/widgets/question_card.dart';
+import 'package:provider/provider.dart';
 
 class GetJson extends StatelessWidget {
   @override
@@ -62,14 +64,19 @@ class _TriviaPageState extends State<TriviaPage> {
   @override
   Widget build(BuildContext context) {
     String question = '3';
+    final stateTrivia = Provider.of<TriviaProvider>(context);
 
-    Function tapped(int index) {
+    bool tapped(int index) {
+      bool correct;
       print('you have tapped $index');
       if (myData[1][question][transformIndex(index)] == myData[2][question]) {
         print('Right Answer');
+        correct = true;
       } else {
         print('Wrong Answer');
+        correct = false;
       }
+      return correct;
     }
 
     return Scaffold(
